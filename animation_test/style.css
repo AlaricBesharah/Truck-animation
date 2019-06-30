@@ -1,0 +1,89 @@
+html{
+    margin:0;
+    padding:0;
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+    color:white;
+    overflow: hidden;
+    border:none;
+}
+
+
+body{
+    background:dodgerblue;
+    min-height:100%;
+}
+
+h1{
+    margin:0;
+    font-size: 50pt;
+}
+
+h2{
+    position: absolute;
+    bottom:0;
+    left:50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.truck_div{
+    display:grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 5fr 3fr;
+    grid-template-areas: 
+        "..... truck"
+        "smoke truck";
+    width:50%;
+    max-width:600px;
+    margin:auto;
+    margin-top:15vh;
+}
+
+.truck_div img{
+    display: inline-block;
+}
+
+.truck_div:hover > #truck{
+    animation-play-state: running;
+}
+
+.truck_div:hover > #smoke{
+    display:block;
+}
+
+#truck{
+    grid-area: truck;
+    width:100%;
+    height:auto;
+    margin-top:0px;
+    animation-name: driving;
+    animation-duration: 200ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    animation-play-state: paused;
+}
+
+#smoke{
+    width:100%;
+    display:none;
+    grid-area: smoke;
+    transition: ease 200ms;
+    animation-name: puff;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    z-index: -1;
+}
+
+@keyframes driving{
+    0%   { margin-top:0px;  }
+    50%  { margin-top:-5px; }
+    100% { margin-top:0px;  }
+}
+
+@keyframes puff{
+    0%   {opacity:0; transform: scale(0.0); margin-left:50px;}
+    50%  {opacity:1; transform: scale(0.5); margin-left:25px;}
+    100% {opacity:0; transform: scale(1.0); margin-left:0px;}
+}
